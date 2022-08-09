@@ -7,6 +7,8 @@ fn main() {
     ownership();
     println!("============== Functions ==============");
     functions();
+    println!("============== Structures ==============");
+    structures();
 }
 
 fn ownership() {
@@ -133,4 +135,71 @@ fn functions() {
     }
 
     process_name("Bakri", |name: &str| println!("{name}"));
+}
+
+fn structures() {
+    // This is instead of a class which rust does not support any more
+    struct Person {
+        name: String,
+        age: u8,
+    }
+
+    fn create_person(name: String, age: u8) -> Person {
+        Person { name, age }
+    }
+
+    let person = create_person(String::from("Bakri"), 25);
+
+    // Struct update index syntax
+    let person2 = Person {
+        name: "John".to_string(),
+        ..person
+    };
+
+    println!("{} is {} years old", person2.name, person2.age);
+    #[derive(Debug)]
+    struct Point(f64, f64, f64);
+
+    let point = Point(20.2, 5.0, 10.7);
+
+    // println!("X = {}, Y = {}, Z = {}", point.0, point.1, point.2);
+
+    impl Point {
+        fn describe(&self) {
+            println!("Point is at ({}, {}, {})", self.0, self.1, self.2);
+        }
+
+        fn double_point(&self) -> Point {
+            Point(self.0 * 2.0, self.1 * 2.0, self.2 * 2.0)
+        }
+
+        fn make_twice(&mut self) {
+            self.0 *= 2.0;
+            self.1 *= 2.0;
+            self.2 *= 2.0;
+        }
+
+        fn zero() -> Point {
+            Point(0.0, 0.0, 0.0)
+        }
+    }
+
+    point.describe();
+    point.double_point().describe();
+
+    println!("{:?}", point);
+
+    let mut point3 = Point(1.0, 2.0, 3.0);
+    let point4 = point3.double_point();
+    point4.describe();
+    point3.make_twice();
+    point3.describe();
+
+    let point5 = Point::zero();
+    let point6 = Point::zero();
+    let point7 = Point::zero();
+
+    point5.describe();
+    point6.describe();
+    point7.describe();
 }
