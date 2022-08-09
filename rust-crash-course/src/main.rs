@@ -5,6 +5,8 @@ fn main() {
     variables();
     println!("============== Ownership ==============");
     ownership();
+    println!("============== Functions ==============");
+    functions();
 }
 
 fn ownership() {
@@ -91,4 +93,44 @@ fn variables() {
     let (age, name) = tuple;
 
     println!("{age} {name}");
+}
+
+fn functions() {
+    // This function returns a Stirng, but we can say that this
+    // function does not return anything by either saying
+    // fn say_hello_world() -> () {} which means return unit type
+    // or saying fn say_hello_world(){}
+    fn say_hello_world() -> String {
+        // This is a shorthand for return statement
+        // without a return and without a semicolon
+        String::from("Hello, World!")
+    }
+
+    fn say_hello(to_person: String) -> String {
+        format!("Hello {}!", to_person)
+    }
+
+    let message = say_hello_world();
+    println!("{message}");
+    let hello = say_hello(String::from("Bakri"));
+    println!("{hello}");
+
+    // Inline Function
+    let say_hello_to = |name: &str| format!("Hello, {}!", name);
+
+    let hello2 = say_hello_to("Bakri");
+
+    println!("{hello2}");
+
+    let ask_for_age = |age: i32| age + 10;
+
+    let age = ask_for_age(25);
+
+    println!("{age}");
+
+    fn process_name(name: &str, callback: fn(&str) -> ()) {
+        callback(name);
+    }
+
+    process_name("Bakri", |name: &str| println!("{name}"));
 }
