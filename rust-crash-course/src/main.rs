@@ -9,6 +9,8 @@ fn main() {
     functions();
     println!("============== Structures ==============");
     structures();
+    println!("============== Enumerations ==============");
+    enunmerations();
 }
 
 fn ownership() {
@@ -202,4 +204,80 @@ fn structures() {
     point5.describe();
     point6.describe();
     point7.describe();
+}
+
+fn enunmerations() {
+    // #[derive(PartialEq)]
+    // enum AnimalType {
+    //     Dog,
+    //     Cat,
+    //     Rabbit,
+    // }
+
+    // let fluffy = AnimalType::Dog;
+
+    // if fluffy == AnimalType::Dog {
+    //     println!("Fluffy is a Dog");
+    // } else {
+    //     println!("Fluffy is not a Dog");
+    // }
+
+    // This is the switch statement in Rust
+    // match fluffy {
+    //     AnimalType::Dog => println!("Fluffy is a Dog"),
+    //     AnimalType::Cat => println!("Fluffy is a Cat"),
+    //     AnimalType::Rabbit => println!("Fluffy is a Rabbit"),
+    //     // This is the default case
+    //     _ => println!("Fluffy is Something Else"),
+    // };
+
+    // enum Shapes {
+    //     Rectangle { width: f64, height: f64 },
+    //     Circle { radius: f64, center: (f64, f64) },
+    // }
+
+    // let rect = Shapes::Rectangle {
+    //     width: 10.0,
+    //     height: 5.0,
+    // };
+
+    // let circ = Shapes::Circle {
+    //     radius: 20.1,
+    //     center: (0.0, 0.0),
+    // };
+
+    // if let Shapes::Rectangle { width, height } = rect {
+    //     println!("Width is {}, Height is {}", width, height);
+    // }
+
+    // impl Shapes {
+    //     fn area(&self) -> f64 {
+    //         match self {
+    //             Shapes::Rectangle { width, height } => width * height,
+    //             Shapes::Circle { radius, center } => radius * radius * PI,
+    //         }
+    //     }
+    // }
+
+    // let rect_area = rect.area();
+    // let circ_area = circ.area();
+
+    // println!("Rectangle Area is {}", rect_area);
+    // println!("Circle Area is {}", circ_area);
+
+    enum Pet {
+        Cat { name: String },
+        Dog { name: String },
+    }
+
+    let fluffy = Pet::Cat {
+        name: "Fluffy".to_string(),
+    };
+
+    let name = match fluffy {
+        Pet::Cat { name } => name,
+        Pet::Dog { name } => name,
+    };
+
+    println!("Name is {}", name);
 }
