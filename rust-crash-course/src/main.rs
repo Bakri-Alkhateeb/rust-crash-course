@@ -1,5 +1,7 @@
 #![deny(clippy::all)]
 
+// use std::collections::{btree_map::ValuesMut, HashMap};
+
 fn main() {
     println!("============== Variables ==============");
     variables();
@@ -11,6 +13,8 @@ fn main() {
     structures();
     println!("============== Enumerations ==============");
     enunmerations();
+    println!("============== Collections ==============");
+    collections();
 }
 
 fn ownership() {
@@ -92,11 +96,11 @@ fn variables() {
 
     // println!("My Full Name is {first_name} {last_name}");
 
-    let tuple = (25, "Bakri");
+    // let tuple = (25, "Bakri");
 
-    let (age, name) = tuple;
+    // let (age, name) = tuple;
 
-    println!("{age} {name}");
+    // println!("{age} {name}");
 }
 
 fn functions() {
@@ -104,106 +108,106 @@ fn functions() {
     // function does not return anything by either saying
     // fn say_hello_world() -> () {} which means return unit type
     // or saying fn say_hello_world(){}
-    fn say_hello_world() -> String {
-        // This is a shorthand for return statement
-        // without a return and without a semicolon
-        String::from("Hello, World!")
-    }
+    // fn say_hello_world() -> String {
+    //     // This is a shorthand for return statement
+    //     // without a return and without a semicolon
+    //     String::from("Hello, World!")
+    // }
 
-    fn say_hello(to_person: String) -> String {
-        format!("Hello {}!", to_person)
-    }
+    // fn say_hello(to_person: String) -> String {
+    //     format!("Hello {}!", to_person)
+    // }
 
-    let message = say_hello_world();
-    println!("{message}");
-    let hello = say_hello(String::from("Bakri"));
-    println!("{hello}");
+    // let message = say_hello_world();
+    // println!("{message}");
+    // let hello = say_hello(String::from("Bakri"));
+    // println!("{hello}");
 
-    // Inline Function
-    let say_hello_to = |name: &str| format!("Hello, {}!", name);
+    // // Inline Function
+    // let say_hello_to = |name: &str| format!("Hello, {}!", name);
 
-    let hello2 = say_hello_to("Bakri");
+    // let hello2 = say_hello_to("Bakri");
 
-    println!("{hello2}");
+    // println!("{hello2}");
 
-    let ask_for_age = |age: i32| age + 10;
+    // let ask_for_age = |age: i32| age + 10;
 
-    let age = ask_for_age(25);
+    // let age = ask_for_age(25);
 
-    println!("{age}");
+    // println!("{age}");
 
-    fn process_name(name: &str, callback: fn(&str) -> ()) {
-        callback(name);
-    }
+    // fn process_name(name: &str, callback: fn(&str) -> ()) {
+    //     callback(name);
+    // }
 
-    process_name("Bakri", |name: &str| println!("{name}"));
+    // process_name("Bakri", |name: &str| println!("{name}"));
 }
 
 fn structures() {
     // This is instead of a class which rust does not support any more
-    struct Person {
-        name: String,
-        age: u8,
-    }
+    // struct Person {
+    //     name: String,
+    //     age: u8,
+    // }
 
-    fn create_person(name: String, age: u8) -> Person {
-        Person { name, age }
-    }
+    // fn create_person(name: String, age: u8) -> Person {
+    //     Person { name, age }
+    // }
 
-    let person = create_person(String::from("Bakri"), 25);
+    // let person = create_person(String::from("Bakri"), 25);
 
-    // Struct update index syntax
-    let person2 = Person {
-        name: "John".to_string(),
-        ..person
-    };
+    // // Struct update index syntax
+    // let person2 = Person {
+    //     name: "John".to_string(),
+    //     ..person
+    // };
 
-    println!("{} is {} years old", person2.name, person2.age);
-    #[derive(Debug)]
-    struct Point(f64, f64, f64);
+    // println!("{} is {} years old", person2.name, person2.age);
+    // #[derive(Debug)]
+    // struct Point(f64, f64, f64);
 
-    let point = Point(20.2, 5.0, 10.7);
+    // let point = Point(20.2, 5.0, 10.7);
 
-    // println!("X = {}, Y = {}, Z = {}", point.0, point.1, point.2);
+    // // println!("X = {}, Y = {}, Z = {}", point.0, point.1, point.2);
 
-    impl Point {
-        fn describe(&self) {
-            println!("Point is at ({}, {}, {})", self.0, self.1, self.2);
-        }
+    // impl Point {
+    //     fn describe(&self) {
+    //         println!("Point is at ({}, {}, {})", self.0, self.1, self.2);
+    //     }
 
-        fn double_point(&self) -> Point {
-            Point(self.0 * 2.0, self.1 * 2.0, self.2 * 2.0)
-        }
+    //     fn double_point(&self) -> Point {
+    //         Point(self.0 * 2.0, self.1 * 2.0, self.2 * 2.0)
+    //     }
 
-        fn make_twice(&mut self) {
-            self.0 *= 2.0;
-            self.1 *= 2.0;
-            self.2 *= 2.0;
-        }
+    //     fn make_twice(&mut self) {
+    //         self.0 *= 2.0;
+    //         self.1 *= 2.0;
+    //         self.2 *= 2.0;
+    //     }
 
-        fn zero() -> Point {
-            Point(0.0, 0.0, 0.0)
-        }
-    }
+    //     fn zero() -> Point {
+    //         Point(0.0, 0.0, 0.0)
+    //     }
+    // }
 
-    point.describe();
-    point.double_point().describe();
+    // point.describe();
+    // point.double_point().describe();
 
-    println!("{:?}", point);
+    // println!("{:?}", point);
 
-    let mut point3 = Point(1.0, 2.0, 3.0);
-    let point4 = point3.double_point();
-    point4.describe();
-    point3.make_twice();
-    point3.describe();
+    // let mut point3 = Point(1.0, 2.0, 3.0);
+    // let point4 = point3.double_point();
+    // point4.describe();
+    // point3.make_twice();
+    // point3.describe();
 
-    let point5 = Point::zero();
-    let point6 = Point::zero();
-    let point7 = Point::zero();
+    // let point5 = Point::zero();
+    // let point6 = Point::zero();
+    // let point7 = Point::zero();
 
-    point5.describe();
-    point6.describe();
-    point7.describe();
+    // point5.describe();
+    // point6.describe();
+    // point7.describe();
 }
 
 fn enunmerations() {
@@ -265,19 +269,131 @@ fn enunmerations() {
     // println!("Rectangle Area is {}", rect_area);
     // println!("Circle Area is {}", circ_area);
 
-    enum Pet {
-        Cat { name: String },
-        Dog { name: String },
-    }
+    // enum Pet {
+    //     Cat { name: String },
+    //     Dog { name: String },
+    // }
 
-    let fluffy = Pet::Cat {
-        name: "Fluffy".to_string(),
-    };
+    // let fluffy = Pet::Cat {
+    //     name: "Fluffy".to_string(),
+    // };
 
-    let name = match fluffy {
-        Pet::Cat { name } => name,
-        Pet::Dog { name } => name,
-    };
+    // let name = match fluffy {
+    //     Pet::Cat { name } => name,
+    //     Pet::Dog { name } => name,
+    // };
 
-    println!("Name is {}", name);
+    // println!("Name is {}", name);
+}
+
+fn collections() {
+    // Tuples
+    // struct Point(f32, f32);
+    // let values = ("Hello", "World", 30);
+    // let hello = values.0;
+    // let world = values.1;
+    // let number = values.2;
+    // let (_, _, age) = values;
+
+    // fn get_values() -> (String, String, i32) {
+    //     ("Hello".to_string(), "World".to_string(), 30)
+    // }
+
+    // let (hello, _, _) = get_values();
+
+    // Vectors
+    // let vectors: [&str; 2] = ["Foo", "bar"];
+    // for value in vectors.iter() {
+    //     println!("{}", value);
+    // }
+    // let foo = &vectors[0];
+    // println!("{}", vectors.len());
+    // let vectors2: [i32; 2] = [10, 20];
+    // let doubled = vectors2.iter().map(|x| x * 2);
+    // println!("{}", doubled[0]);
+    // let mut vectors = vec![1, 2, 3, 4, 5, 6];
+    // let mut values2 = vec![1, 2, 3, 4, 5, 6];
+    // vectors.push(7);
+    // println!("{:?}", vectors);
+    // let seven = vectors.pop();
+    // println!("{:?}", seven);
+    // vectors.extend_from_slice(&[8, 9, 10]);
+    // println!("{:?}", vectors);
+    // vectors.append(&mut values2);
+    // println!("{:?}", vectors);
+    // println!("{:?}", values2);
+
+    // if vectors.contains(&3) {
+    //     println!("Yes");
+    // } else {
+    //     println!("No");
+    // }
+
+    // if values2.is_empty() {
+    //     println!("Yes");
+    // } else {
+    //     println!("No");
+    // }
+
+    // HashMaps (needs to be imported using std::collections::HashMap)
+    // let mut values: HashMap<&str, &str> = HashMap::new();
+    // values.insert("foo", "Bar");
+
+    // println!("{:?}", values);
+
+    // values.remove("foo");
+    // println!("{:?}", values);
+    // values.insert("name", "Bar");
+    // // unsafe reading
+    // println!("{}", values["name"]);
+    // // safe reading
+    // match values.get("foo") {
+    //     Some(value) => println!("{}", value),
+    //     None => println!("Key (foo) does not exist"),
+    // };
+
+    // for (&key, &value) in &values {
+    //     println!("Key ({}) has Value ({})", key, value);
+    // }
+
+    // values.entry("foo").or_insert("Jane");
+
+    // for (&key, &value) in &values {
+    //     println!("Key ({}) has Value ({})", key, value);
+    // }
+
+    // #[derive(Hash, Eq, PartialEq, Debug)]
+    // struct Person {
+    //     name: String,
+    //     age: u8,
+    // }
+
+    // let mut people: HashMap<Person, &str> = HashMap::new();
+    // let person = Person {
+    //     name: "Bakri".to_string(),
+    //     age: 25,
+    // };
+    // people.insert(person, "Bakri");
+
+    // Iterators
+    // let values = vec![1, 2, 3, 4, 5];
+
+    // for value in values.iter() {
+    //     println!("{}", value);
+    // }
+
+    // let iter = values.iter();
+
+    // let sum: i32 = iter.sum();
+    // // iterators are consumables
+    // let iter2 = values.iter();
+    // let sum2: i32 = iter2.sum();
+
+    // println!("Sum is {}", sum);
+    // println!("Sum2 is {}", sum2);
+
+    // let doubled: Vec<i32> = values.iter().map(|x| x * 2).collect();
+    // println!("Doubled is {:?}", doubled);
+    // let odd: Vec<i32> = values.into_iter().filter(|x| x % 2 == 0).collect();
+    // println!("ODD is {:?}", odd);
 }
