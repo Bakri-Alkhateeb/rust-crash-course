@@ -15,6 +15,8 @@ fn main() {
     enunmerations();
     println!("============== Collections ==============");
     collections();
+    println!("============== Optionals ==============");
+    optionals();
 }
 
 fn ownership() {
@@ -396,4 +398,27 @@ fn collections() {
     // println!("Doubled is {:?}", doubled);
     // let odd: Vec<i32> = values.into_iter().filter(|x| x % 2 == 0).collect();
     // println!("ODD is {:?}", odd);
+}
+
+fn optionals() {
+    // let value = Some(10);
+    // let name: Option<&str> = None;
+
+    // match name {
+    //     Some(n) => println!("Hello {}", n),
+    //     None => println!("No Name Provided"),
+    // };
+
+    // let unwrapped_name = name.expect("Name was not provided");
+    // let unwrapped_name2 = name.unwrap();
+    // println!("Name is {}", unwrapped_name);
+    // println!("Name is {}", unwrapped_name2);
+    // let mut age: Option<i8> = Some(20);
+
+    // match age.as_mut() {
+    //     Some(age) => *age += 10,
+    //     None => {}
+    // }
+
+    // println!("Age is {:?}", age);
 }
