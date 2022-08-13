@@ -17,6 +17,8 @@ fn main() {
     collections();
     println!("============== Optionals ==============");
     optionals();
+    println!("============== Error Handling ==============");
+    error_handling();
 }
 
 fn ownership() {
@@ -421,4 +423,66 @@ fn optionals() {
     // }
 
     // println!("Age is {:?}", age);
+}
+
+fn error_handling() {
+    // Result<ValueType, ErrorType>
+    // let value: Result<&str, Box<dyn std::error::Error>> = Ok("Hello");
+
+    // match value {
+    //     Ok(v) => println!("Value is {}", v),
+    //     Err(e) => println!("Error is {}", e),
+    // }
+
+    // let value2: Result<&str, ()> = Err(());
+
+    // match value2 {
+    //     Ok(v) => println!("Value is {}", v),
+    //     Err(_) => println!("Some error occurred"),
+    // }
+
+    // fn get_user_name() -> Result<String, ()> {
+    //     Ok("Bakri".to_string())
+    //     // Err(())
+    // }
+
+    // let user_name = get_user_name().expect("I was expecting a Username");
+    // println!("Username is {}", user_name);
+
+    // fn get_user_name2() -> Result<String, ()> {
+    //     // Ok("Bakri".to_string())
+    //     Err(())
+    // }
+
+    // let user_name2 = get_user_name2().expect_err("I was expecting an Err");
+
+    // fn get_first_name() -> Result<String, String> {
+    //     // Ok("Bakri".to_string())
+    //     Err("I don't know the first name".to_string())
+    // }
+
+    // fn get_last_name() -> Result<String, String> {
+    //     Ok("Alkhateeb".to_string())
+    // }
+
+    // fn get_full_name() -> Result<String, String> {
+    //     let first_name = get_first_name()?;
+    //     let last_name = get_last_name()?;
+
+    //     Ok(format!("{} {}", first_name, last_name))
+    // }
+
+    // let full_name = get_full_name();
+
+    // match full_name {
+    //     Ok(n) => println!("{}", n),
+    //     Err(_) => {}
+    // }
+
+    // let length = full_name.map(|name| name.len()).unwrap_or_default();
+
+    // println!("Length is {}", length);
+
+    // let error_length = full_name.map_err(|err| err.len());
+    // println!("Error Length is {:?}", error_length);
 }
