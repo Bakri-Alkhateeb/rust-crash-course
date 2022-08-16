@@ -19,6 +19,8 @@ fn main() {
     optionals();
     println!("============== Error Handling ==============");
     error_handling();
+    println!("============== Lifetimes ==============");
+    lifetimes();
 }
 
 fn ownership() {
@@ -485,4 +487,57 @@ fn error_handling() {
 
     // let error_length = full_name.map_err(|err| err.len());
     // println!("Error Length is {:?}", error_length);
+}
+
+fn lifetimes() {
+    // fn get_full_name() -> &'static str {
+    //     "Bakri"
+    // }
+
+    // let full_name = get_full_name();
+    // println!("{}", full_name);
+
+    // fn get_random_name<'l>(a: &'l str, b: &'l str) -> &'l str {
+    //     b
+    // }
+
+    // let name = get_random_name("John", "Bakri");
+    // println!("{}", name);
+
+    // struct Person<'a> {
+    //     name: &'a str,
+    // }
+
+    // fn get_first_name(full_name: &str) -> &str {
+    //     full_name
+    // }
+
+    // let first_name = get_first_name("Bakri");
+    // println!("{}", first_name);
+
+    // struct Person<'a> {
+    //     first_name: &'a str,
+    //     last_name: &'a str,
+    // }
+
+    // impl<'a> Person<'a> {
+    //     fn first_char_of_first_name(&self) -> &str {
+    //         &self.first_name[0..1]
+    //     }
+
+    //     fn get_full_name(&self) -> String {
+    //         format!("{} {}", &self.first_name, &self.last_name)
+    //     }
+    // }
+
+    // let person = Person {
+    //     first_name: "Bakri",
+    //     last_name: "Alkhateeb",
+    // };
+    // println!("{}", person.first_char_of_first_name());
+    // println!("{}", person.get_full_name());
+
+    // enum Animal<'a> {
+    //     Dog { name: &'a str },
+    // }
 }
